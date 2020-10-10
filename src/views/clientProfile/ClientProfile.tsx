@@ -6,7 +6,7 @@ import { AlertHandler } from "../../components/alerthandler/AlertHandler";
 
 interface Props {}
 
-export const UserProfile = (props: Props) => {
+export const ClientProfile = (props: Props) => {
   let { id } = useParams();
 
   const [errorMessage, setErrorMessage] = useState("");
