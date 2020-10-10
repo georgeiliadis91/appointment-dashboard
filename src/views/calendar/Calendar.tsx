@@ -5,9 +5,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { Month } from "./components/month/Month";
 import { Day } from "./components/day/Day";
 import { Week } from "./components/week/Week";
-import { Month } from "./components/month/Month";
 
 interface TabPanelProps {
   children?: React.ReactNode;
