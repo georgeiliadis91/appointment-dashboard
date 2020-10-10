@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import dayjs from "dayjs";
 import { getPrevMonday } from "../../../../helpers/dateHelpers";
 import { WeekDay } from "./components/WeekDay";
@@ -9,7 +9,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   weekDay: {
     display: "flex",
     flexDirection: "row",
+    alignContent: "stretch",
     backgroundColor: theme.palette.background.paper,
+  },
+  dayItem: {
+    flex: 1,
   },
 }));
 
@@ -26,8 +30,12 @@ export const Week = ({}: Props) => {
 
   return (
     <div className={classes.weekDay}>
-      {days.map((item) => {
-        return item;
+      {days.map((item, index) => {
+        return (
+          <div className={classes.dayItem}>
+            <WeekDay key={index} day={item} />
+          </div>
+        );
       })}
     </div>
   );
