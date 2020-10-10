@@ -18,5 +18,5 @@
 16. Create Login gui - done
 17. Import react Beautifll Dnd
 18. Find date lib
-19. Implement DND for month
+19. Implement DND for month 
 
