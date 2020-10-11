@@ -1,3 +1,5 @@
+import blue from "@material-ui/core/colors/blue";
+import red from "@material-ui/core/colors/red";
 import Paper from "@material-ui/core/Paper/Paper";
 import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0.5, 1),
     minHeight: theme.spacing(5),
     margin: theme.spacing(0.5, 0.25),
+    background: blue[200],
   },
 }));
 

@@ -90,6 +90,12 @@ export const DashBoardLayout = () => {
               </ListItemIcon>
               <Link to="/app/calendar">Calendar</Link>
             </ListItem>
+            <ListItem button key={2}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <Link to="/app/visits">Visits</Link>
+            </ListItem>
           </List>
           <Divider />
         </div>

@@ -9,6 +9,7 @@ import { Login } from "./views/login/Login";
 import { PublicLayout } from "./layout/public/PublicLayout";
 import { Calendar } from "./views/calendar/Calendar";
 import { Home } from "./views/home/Home";
+import { Visits } from "./views/visits/Visits";
 // TODO construct the children based on API response
 
 const routes = [
@@ -21,6 +22,7 @@ const routes = [
       { path: "clients", element: <Clients /> },
       { path: "clients/:id", element: <ClientProfile /> },
       { path: "calendar", element: <Calendar /> },
+      { path: "visits", element: <Visits /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },

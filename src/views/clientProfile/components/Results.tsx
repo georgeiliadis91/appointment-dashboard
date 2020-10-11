@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { IClient } from "../../entities/client";
-import moment from "moment";
+import { IClient } from "../../../entities/client";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import {
   Avatar,
@@ -22,8 +19,11 @@ import {
 } from "@material-ui/core";
 import MaterialTable from "material-table";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { tableIcons } from "../../components/table-icons";
+import { tableIcons } from "../../../components/table-icons";
 import { useNavigate } from "react-router-dom";
+import { IVisit } from "../../../entities/visit";
+import { CalendarViewDayOutlined } from "@material-ui/icons";
+import dayjs from "dayjs";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -38,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  clients: IClient[];
+  visits: IVisit[];
 }
 
-const Results: React.FC<Props> = ({ clients }) => {
+const Results: React.FC<Props> = ({ visits }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -52,57 +52,43 @@ const Results: React.FC<Props> = ({ clients }) => {
           title="Client List"
           columns={[
             {
-              title: "Name",
-              field: "name",
-              render: (rowData: IClient) => (
-                <div className={classes.rowDataColumn}>
-                  <Avatar
-                    className={classes.avatar}
-                    key={rowData.id}
-                    alt={rowData.name}
-                    src={rowData.image}
-                  />
-                  <Typography variant="body1">{" " + rowData.name}</Typography>
-                </div>
+              title: "Date",
+              field: "date",
+              render: (rowData: IVisit) => (
+                <Typography variant="body1">{rowData.date}</Typography>
               ),
             },
             {
-              title: "Phone",
-              field: "phone",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.phone}</Typography>
+              title: "Reason",
+              field: "Reason",
+              render: (rowData: IVisit) => (
+                <Typography variant="body1">{rowData.reason}</Typography>
+              ),
+            },
+
+            {
+              title: "Charge",
+              field: "charge",
+              render: (rowData: IVisit) => (
+                <Typography variant="body1">{rowData.charge}</Typography>
               ),
             },
             {
-              title: "Address",
-              field: "address",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.address}</Typography>
-              ),
-            },
-            {
-              title: "Email",
-              field: "email",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.email}</Typography>
-              ),
-            },
-            {
-              title: "Last Updated",
-              field: "updated_at",
-              render: (rowData: IClient) => (
+              title: "Date of appointment",
+              field: "c",
+              render: (rowData: IVisit) => (
                 <Typography variant="body1">
-                  {moment(rowData.updated_at).format("DD.MM.YYYY")}
+                  {dayjs(rowData.updated_at).format("DD.MM.YYYY")}
                 </Typography>
               ),
             },
             {
               title: "Actions",
               field: "actions",
-              render: (rowData: IClient) => (
+              render: (rowData: IVisit) => (
                 <IconButton
                   onClick={() => {
-                    navigate(`/app/clients/${rowData.id}`);
+                    navigate(`/app/visits/${rowData.id}`);
                   }}
                 >
                   <VisibilityIcon />
@@ -111,7 +97,7 @@ const Results: React.FC<Props> = ({ clients }) => {
               type: "numeric",
             },
           ]}
-          data={clients}
+          data={visits}
           options={{
             selection: true,
           }}

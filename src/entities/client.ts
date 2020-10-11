@@ -1,3 +1,5 @@
+import { IVisit } from "./visit";
+
 export interface IClient {
   id: number;
   name: string;
@@ -7,4 +9,5 @@ export interface IClient {
   address: string;
   created_at: Date;
   updated_at: Date;
+  visits: IVisit[];
 }

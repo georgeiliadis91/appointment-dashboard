@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Container, makeStyles } from "@material-ui/core";
-import Results from "./Results";
+import Results from "./components/Results";
 import Toolbar from "./Toolbar";
 import { getClients } from "../../services/clientApi";
 import { IClient } from "../../entities/client";
@@ -25,7 +25,6 @@ const Clients = () => {
   useEffect(() => {
     const fetchData = async () => {
       const clientData = await getClients();
-      console.log("the data", clientData);
       setClients(clientData);
       setLoading(false);
     };
@@ -33,7 +32,6 @@ const Clients = () => {
     try {
       fetchData();
     } catch (error) {
-      console.log(error);
       setErrorMessage(error);
     }
   }, []);
