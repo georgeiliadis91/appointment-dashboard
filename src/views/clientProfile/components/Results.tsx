@@ -49,13 +49,16 @@ const Results: React.FC<Props> = ({ visits }) => {
     <Card className={classes.root}>
       <PerfectScrollbar>
         <MaterialTable
-          title="Client List"
+          title="Client Visits"
           columns={[
             {
               title: "Date",
               field: "date",
               render: (rowData: IVisit) => (
-                <Typography variant="body1">{rowData.date}</Typography>
+                <Typography variant="body1">
+                  {" "}
+                  {dayjs(rowData.date).format("DD.MM.YYYY")}
+                </Typography>
               ),
             },
             {
@@ -75,7 +78,7 @@ const Results: React.FC<Props> = ({ visits }) => {
             },
             {
               title: "Date of appointment",
-              field: "c",
+              field: "updated_at",
               render: (rowData: IVisit) => (
                 <Typography variant="body1">
                   {dayjs(rowData.updated_at).format("DD.MM.YYYY")}

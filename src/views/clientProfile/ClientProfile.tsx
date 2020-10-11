@@ -54,11 +54,6 @@ export const ClientProfile = (props: Props) => {
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
       />
-      <AlertHandler
-        severity="error"
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-      />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { IClient } from "./client";
+
 export interface IVisit {
   id: number;
   client: number;
