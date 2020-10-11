@@ -2,7 +2,7 @@ import { IClient } from "./client";
 
 export interface IVisit {
   id: number;
-  client: number;
+  client: IClient;
   description: string;
   date: Date;
   reason: string;
