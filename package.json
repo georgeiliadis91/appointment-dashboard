@@ -23,6 +23,7 @@
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.9.2",
     "react-perfect-scrollbar": "^1.5.8",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",

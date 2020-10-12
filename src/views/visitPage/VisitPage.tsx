@@ -35,7 +35,7 @@ export const VisitPage = (props: Props) => {
         Visit Page - {id}
         <ul>
           <li>{visitData?.id}</li>
-          {visitData?.client?.name && <li>{visitData?.client.name}</li>}
+          <li>{visitData?.client.name}</li>
           <li>{visitData?.description}</li>
           <li>{visitData?.date}</li>
           <li>{visitData?.charge}</li>

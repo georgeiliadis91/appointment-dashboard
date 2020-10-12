@@ -24,6 +24,7 @@ import MaterialTable from "material-table";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { tableIcons } from "../../../components/table-icons";
 import { useNavigate } from "react-router-dom";
+import Link from "@material-ui/core/Link/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    cursor: "pointer",
   },
 }));
 
@@ -50,6 +52,12 @@ const Results: React.FC<Props> = ({ clients }) => {
       <PerfectScrollbar>
         <MaterialTable
           title="Client List"
+          options={{
+            paging: true,
+            pageSize: 10,
+            pageSizeOptions: [10, 20, 50],
+            selection: true,
+          }}
           columns={[
             {
               title: "Name",
@@ -62,7 +70,14 @@ const Results: React.FC<Props> = ({ clients }) => {
                     alt={rowData.name}
                     src={rowData.image}
                   />
-                  <Typography variant="body1">{" " + rowData.name}</Typography>
+                  <Link
+                    onClick={() => {
+                      navigate(`/app/clients/${rowData.id}`);
+                    }}
+                    color="inherit"
+                  >
+                    <Typography variant="body1">{rowData.name}</Typography>
+                  </Link>
                 </div>
               ),
             },
@@ -112,9 +127,6 @@ const Results: React.FC<Props> = ({ clients }) => {
             },
           ]}
           data={clients}
-          options={{
-            selection: true,
-          }}
           icons={tableIcons}
         />
       </PerfectScrollbar>
