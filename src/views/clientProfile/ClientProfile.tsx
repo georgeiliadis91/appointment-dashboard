@@ -43,7 +43,7 @@ export const ClientProfile = (props: Props) => {
         <li>{clientData?.created_at}</li>
         <li>{clientData?.phone}</li>
       </ul>
-      <Paper mt={3}>
+      <Paper>
         {loading ? (
           <CircularProgress />
         ) : (
