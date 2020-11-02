@@ -20,8 +20,7 @@ const userReducer = (state = initialState, action: AuthActionTypes) => {
 };
 
 const triggerSignInUser = (token: string) => {
-  // TODO Get the token and set it on localstorage.
-  console.log("Sign In User", token);
+  //  Set token to local storage
   return { isAuthenticated: true };
 };
 

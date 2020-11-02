@@ -46,7 +46,7 @@ const Clients = () => {
     try {
       refreshData();
     } catch (error) {
-      setErrorMessage(error);
+      dispatch(triggerError(error));
     }
   }, []);
 
@@ -63,11 +63,6 @@ const Clients = () => {
       <Paper>
         {loading ? <CircularProgress /> : <Results clients={clients} />}
       </Paper>
-      <AddClient
-        handleClose={handleClose}
-        open={open}
-        setErrorMessage={setErrorMessage}
-      />
     </Container>
   );
 };
