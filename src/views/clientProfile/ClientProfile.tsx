@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { IClient } from "../../entities/client";
 import { getClient } from "../../services/clientApi";
-import { AlertHandler } from "../../components/alerthandler/AlertHandler";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Results from "./components/Results";
 import Box from "@material-ui/core/Box/Box";
+import { triggerError } from "../../redux/alert/actions";
+import { useDispatch } from "react-redux";
 
 interface Props {}
 
 export const ClientProfile = (props: Props) => {
   let { id } = useParams();
+  const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
   const [clientData, setClientData] = useState<IClient>();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export const ClientProfile = (props: Props) => {
       fetchData();
       setLoading(false);
     } catch (error) {
-      setErrorMessage(error);
+      dispatch(triggerError(error));
     }
   }, []);
 
@@ -49,11 +50,6 @@ export const ClientProfile = (props: Props) => {
           clientData && <Results visits={clientData.visits} />
         )}
       </Box>
-      <AlertHandler
-        severity="error"
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-      />
     </div>
   );
 };

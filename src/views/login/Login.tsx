@@ -1,44 +1,35 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useStyles } from "./login.style";
+import { Avatar } from "../../components/ui-kit/avatar/avatar";
+import { LockOutlinedIcon } from "../../components/ui-kit/icons/icons";
+import { Typography } from "../../components/ui-kit/typography/typography";
+import { TextField } from "../../components/ui-kit/textfield/textfield";
+import { Button } from "../../components/ui-kit/button/button";
+import { Grid } from "../../components/ui-kit/grid/grid";
+import { Link } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { triggerSignIn } from "../../redux/user/actions";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 export const Login = () => {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
+  const { handleSubmit, control } = useForm<Inputs>();
+
+  const onSubmit = async (data: Inputs) => {
+    dispatch(triggerSignIn("token"));
+  };
+
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -46,32 +37,30 @@ export const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Controller
+            className={classes.textfields}
+            as={TextField}
             name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
+            type="email"
+            control={control}
             variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+            size="small"
+            label="Email"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+          <Controller
+            label="Password"
+            className={classes.textfields}
+            as={TextField}
+            name="password"
+            type="password"
+            control={control}
+            variant="outlined"
+            size="small"
           />
           <Button
             type="submit"
@@ -84,9 +73,7 @@ export const Login = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+              <Link to={"/"}>Forgot password?</Link>
             </Grid>
           </Grid>
         </form>

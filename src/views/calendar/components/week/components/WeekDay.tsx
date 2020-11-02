@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Typography from "@material-ui/core/Typography/Typography";
 import dayjs from "dayjs";
-import Paper from "@material-ui/core/Paper/Paper";
+import Paper from "@material-ui/core/Paper/";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import { Droppable } from "react-beautiful-dnd";

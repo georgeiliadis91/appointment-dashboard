@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Box, Container, makeStyles } from "@material-ui/core";
 import Results from "./components/Results";
 import Toolbar from "./Toolbar";
 import { getClients } from "../../services/clientApi";
 import { IClient } from "../../entities/client";
-import { AlertHandler } from "../../components/alerthandler/AlertHandler";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Typography from "@material-ui/core/Typography/Typography";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import Fab from "@material-ui/core/Fab/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import { AddClient } from "./components/addClient";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.default,
-    minHeight: "100%",
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3),
-  },
-}));
+import { AddClient } from "./components/addClient";
+import { triggerError } from "../../redux/alert/actions";
+import { useDispatch } from "react-redux";
+import { AddIcon } from "../../components/ui-kit/icons/icons";
+import { useStyles } from "./clients.style";
+import { Container } from "../../components/ui-kit/container/container";
+import { Typography } from "../../components/ui-kit/typography/typography";
+import { Fab } from "../../components/ui-kit/fab/fab";
+import { Tooltip } from "../../components/ui-kit/tooltip/tooltip";
+import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
+import { Paper } from "../../components/ui-kit/paper/paper";
 
 const Clients = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [clients, setClients] = useState<IClient[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -42,7 +38,7 @@ const Clients = () => {
       setClients(clientData);
       setLoading(false);
     } catch (error) {
-      setErrorMessage(error);
+      dispatch(triggerError(error));
     }
   };
 
@@ -64,14 +60,9 @@ const Clients = () => {
           </Fab>
         </Tooltip>
       </div>
-      <Box mt={3}>
+      <Paper>
         {loading ? <CircularProgress /> : <Results clients={clients} />}
-      </Box>
-      <AlertHandler
-        severity="error"
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-      />
+      </Paper>
       <AddClient
         handleClose={handleClose}
         open={open}
