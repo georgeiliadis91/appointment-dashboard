@@ -1,8 +1,9 @@
 ### DEMO PROJECT OF AN APPOINT MENT DASH BOARD WIP
 
-To Clone:
+Clone repo then run:
 
 npm install
+
 npm start
 
 
