@@ -2,7 +2,6 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { DashBoardLayout } from "./layout/dashboard";
 import NotFoundView from "./views/errors/NotFoundView";
-import { Customers } from "./views/customers/Customers";
 import Clients from "./views/clients/";
 import { ClientProfile } from "./views/clientProfile/";
 import { Login } from "./views/login/Login";
@@ -19,7 +18,6 @@ const routes = [
     element: <DashBoardLayout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "customers", element: <Customers /> },
       { path: "clients", element: <Clients /> },
       { path: "clients/:id", element: <ClientProfile /> },
       { path: "calendar", element: <Calendar /> },

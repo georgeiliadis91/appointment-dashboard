@@ -1,31 +1,20 @@
 import React, { useState } from "react";
 import { IClient } from "../../../entities/client";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import {
-  Avatar,
-  Box,
-  Card,
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-  makeStyles,
-  IconButton,
-  Button,
-} from "@material-ui/core";
 import MaterialTable from "material-table";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import { tableIcons } from "../../../components/table-icons";
 import { useNavigate } from "react-router-dom";
 import { IVisit } from "../../../entities/visit";
-import { CalendarViewDayOutlined } from "@material-ui/icons";
 import dayjs from "dayjs";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import { Card } from "../../../components/ui-kit/card/card";
+import { Typography } from "../../../components/ui-kit/typography/typography";
+import {
+  IconButton,
+  VisibilityIcon,
+} from "../../../components/ui-kit/icons/icons";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   avatar: {
     marginRight: theme.spacing(2),

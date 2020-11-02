@@ -1,17 +1,19 @@
-import { CircularProgress } from "@material-ui/core";
-import Button from "@material-ui/core/Button/Button";
-import Dialog from "@material-ui/core/Dialog/Dialog";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import TextField from "@material-ui/core/TextField/TextField";
-import Typography from "@material-ui/core/Typography/Typography";
+import Dialog from "@material-ui/core/Dialog";
+import { makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "../../../components/ui-kit/button/button";
+import { CircularProgress } from "../../../components/ui-kit/circular-progress/circulartprogress";
+import {
+  DialogActions,
+  DialogContent,
+} from "../../../components/ui-kit/dialog/dialog";
+import { TextField } from "../../../components/ui-kit/textfield/textfield";
+import { Typography } from "../../../components/ui-kit/typography/typography";
 import { addClient } from "../../../services/clientApi";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   modalTitle: {
     textAlign: "center",
     padding: theme.spacing(2, 0),

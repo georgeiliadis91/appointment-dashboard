@@ -2,31 +2,20 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { IClient } from "../../../entities/client";
-import moment from "moment";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import {
-  Avatar,
-  Box,
-  Card,
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-  makeStyles,
-  IconButton,
-  Button,
-} from "@material-ui/core";
+
 import MaterialTable from "material-table";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { tableIcons } from "../../../components/table-icons";
-import { useNavigate } from "react-router-dom";
-import Link from "@material-ui/core/Link/Link";
+import { Link, useNavigate } from "react-router-dom";
+import { dayjs } from "../../../components/dayjs/dayjs";
+import { Typography } from "../../../components/ui-kit/typography/typography";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import { Avatar } from "../../../components/ui-kit/avatar/avatar";
+import { IconButton } from "../../../components/ui-kit/icons/icons";
+import { Card } from "../../../components/ui-kit/card/card";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   avatar: {
     marginRight: theme.spacing(2),
@@ -70,12 +59,7 @@ const Results: React.FC<Props> = ({ clients }) => {
                     alt={rowData.name}
                     src={rowData.image}
                   />
-                  <Link
-                    onClick={() => {
-                      navigate(`/app/clients/${rowData.id}`);
-                    }}
-                    color="inherit"
-                  >
+                  <Link to={`/app/clients/${rowData.id}`}>
                     <Typography variant="body1">{rowData.name}</Typography>
                   </Link>
                 </div>
@@ -107,7 +91,7 @@ const Results: React.FC<Props> = ({ clients }) => {
               field: "updated_at",
               render: (rowData: IClient) => (
                 <Typography variant="body1">
-                  {moment(rowData.updated_at).format("DD.MM.YYYY")}
+                  {dayjs(rowData.updated_at).format("DD.MM.YYYY")}
                 </Typography>
               ),
             },

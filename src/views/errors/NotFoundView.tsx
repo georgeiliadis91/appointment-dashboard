@@ -1,15 +1,12 @@
 import React, { Fragment } from "react";
-import { Box, Container, Typography, makeStyles } from "@material-ui/core";
+import { Container } from "../../components/ui-kit/container/container";
+import { Paper } from "../../components/ui-kit/paper/paper";
+import { Typography } from "../../components/ui-kit/typography/typography";
 
 const NotFoundView = () => {
   return (
     <Fragment>
-      <Box
-        display="flex"
-        flexDirection="column"
-        height="100%"
-        justifyContent="center"
-      >
+      <Paper>
         <Container maxWidth="md">
           <Typography align="center" color="textPrimary" variant="h1">
             404: The page you are looking for isn’t here
@@ -19,7 +16,7 @@ const NotFoundView = () => {
             Whichever it is, try using the navigation
           </Typography>
         </Container>
-      </Box>
+      </Paper>
     </Fragment>
   );
 };

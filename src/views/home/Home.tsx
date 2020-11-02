@@ -1,29 +1,8 @@
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  Grid,
-  Paper,
-  Typography,
-} from "@material-ui/core";
 import React from "react";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-      minHeight: 650,
-    },
-    title: {
-      margin: theme.spacing(3, 1),
-    },
-  })
-);
+import { Grid } from "../../components/ui-kit/grid/grid";
+import { Paper } from "../../components/ui-kit/paper/paper";
+import { Typography } from "../../components/ui-kit/typography/typography";
+import { useStyles } from "./home.style";
 
 interface Props {}
 
