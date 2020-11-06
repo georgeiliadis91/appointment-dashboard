@@ -1,3 +1,1 @@
-import Typography from "@material-ui/core/Typography";
-
-export { Typography };
+export { default as Typography } from "@material-ui/core/Typography";

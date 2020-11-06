@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import MuiAlert from "../ui-kit/alert/alert";
+import { MuiAlert } from "../ui-kit/alert/alert";
 import { ActionTypes, triggerClose } from "../../redux/alert/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/reducers";

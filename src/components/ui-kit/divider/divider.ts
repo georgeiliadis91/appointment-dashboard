@@ -1,3 +1,1 @@
-import Divider from "@material-ui/core/Divider";
-
-export { Divider };
+export { default as Divider } from "@material-ui/core/Divider";

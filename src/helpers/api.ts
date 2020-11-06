@@ -66,4 +66,6 @@ class API {
   }
 }
 
-export { API };
+const MyAPI = new API();
+
+export { MyAPI };

@@ -1,3 +1,1 @@
-import Drawer from "@material-ui/core/Drawer";
-
-export { Drawer };
+export { default as Drawer } from "@material-ui/core/Drawer";

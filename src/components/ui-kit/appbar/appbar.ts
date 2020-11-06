@@ -1,3 +1,1 @@
-import AppBar from "@material-ui/core/AppBar";
-
-export { AppBar };
+export { default as AppBar } from "@material-ui/core/AppBar";

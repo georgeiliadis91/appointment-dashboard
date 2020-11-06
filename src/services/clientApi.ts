@@ -1,4 +1,4 @@
-import { API } from "../helpers/api";
+import { MyAPI as api } from "../helpers/api";
 import { IClient } from "../entities/client";
 
 // Should Implement cookieStore for the JWTs.
@@ -16,20 +16,17 @@ interface IPostData {
 }
 
 const getClients = async (): Promise<IClient[]> => {
-  const api = new API();
   const response = await api.get("clients");
   console.log(response);
   return response;
 };
 
 const addClient = async (data: IPostData): Promise<IClient[]> => {
-  const api = new API();
   const response = await api.post("clients", data);
   return response;
 };
 
 const getClient = async (id: number): Promise<IClient> => {
-  const api = new API();
   const response = await api.get(`clients/${id}`);
   return response;
 };

@@ -1,3 +1,1 @@
-import { Fab } from "@material-ui/core/";
-
-export { Fab };
+export { default as Fab } from "@material-ui/core/Fab";

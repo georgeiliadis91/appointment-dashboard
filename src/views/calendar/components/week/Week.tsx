@@ -65,13 +65,17 @@ export const Week = ({}: Props) => {
   const onDragEnd = (result: any) => {
     // Make sure we have a valid destination
     const { source, destination, draggableId } = result;
-    if (destination === undefined || destination === null) return null;
+
+    if (destination === undefined || destination === null) {
+      return null;
+    }
     // Make sure we're actually moving the item
     if (
       source.droppableId === destination.droppableId &&
       destination.index === source.index
-    )
+    ) {
       return null;
+    }
 
     // Set start and end variables
     const start = (columns as any)[source.droppableId];

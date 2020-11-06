@@ -1,3 +1,1 @@
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-
-export { FormControlLabel };
+export { default as FormControlLabel } from "@material-ui/core/FormControlLabel";

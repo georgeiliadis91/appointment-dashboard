@@ -16,6 +16,7 @@ import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 
+// TODO conver them to single exports and put them inside there.
 const tableIcons = {
   Add: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
     <AddBox {...props} ref={ref} />

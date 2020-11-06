@@ -1,3 +1,1 @@
-import Grid from "@material-ui/core/Grid";
-
-export { Grid };
+export { default as Grid } from "@material-ui/core/Grid";

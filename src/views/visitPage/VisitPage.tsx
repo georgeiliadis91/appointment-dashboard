@@ -9,23 +9,23 @@ import { getVisit } from "../../services/visitApi";
 interface Props {}
 
 export const VisitPage = (props: Props) => {
-  let { id } = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [visitData, setVisitData] = useState<IVisit>();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
-      const client = await getVisit(parseInt(id));
-      setVisitData(client);
+      try {
+        const client = await getVisit(parseInt(id));
+        setVisitData(client);
+      } catch (error) {
+        dispatch(triggerError(error));
+      }
     };
 
-    try {
-      fetchData();
-      setLoading(false);
-    } catch (error) {
-      dispatch(triggerError(error));
-    }
+    fetchData();
+    setLoading(false);
   }, []);
 
   if (loading) {

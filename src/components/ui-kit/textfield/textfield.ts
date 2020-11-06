@@ -1,3 +1,1 @@
-import { TextField } from "@material-ui/core";
-
-export { TextField };
+export { default as TextField } from "@material-ui/core/TextField";

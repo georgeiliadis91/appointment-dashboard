@@ -1,3 +1,1 @@
-import Checkbox from "@material-ui/core/Checkbox";
-
-export { Checkbox };
+export { default as Checkbox } from "@material-ui/core/Checkbox";

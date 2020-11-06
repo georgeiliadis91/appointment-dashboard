@@ -1,3 +1,1 @@
-import Tooltip from "@material-ui/core/Tooltip";
-
-export { Tooltip };
+export { default as Tooltip } from "@material-ui/core/Tooltip";

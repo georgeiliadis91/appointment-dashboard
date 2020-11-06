@@ -28,3 +28,36 @@
 13. Implement DND for month
 14. Implement DND for day
 15. Make Day/Week/Month draggable to have slots where the item "sticks"
+
+======== CODE IMPROVEMENTS ==============
+
+1. Fix useEffect trycatch methods, to catch async error - Done
+2. Fix main file imports - Done
+3. Create hook for alert Dispatching
+4. Check if localstorageExists \*\* - Done
+5. Fix any inside allyProps - Done
+6. Fix arrow branching udner weekCaledar - Done
+7. Change variable of useParam to const instead of let - Done
+8. Create a mechanism that if localstorage is not supported it defaults to cookieStorage.
+
+** Example smippet 1 **
+
+snippet:
+const isSupported = (() => {
+if(!'localStorage' in window) {
+return false;
+}
+
+try {
+const key = '_ls_test_';
+
+    localStorage.setItem(key, key)
+    localStorage.getItem(key)
+    localStorage.removeItem(key)
+
+    return true
+
+} catch {
+return false
+}
+})()

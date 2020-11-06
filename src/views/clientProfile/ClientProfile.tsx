@@ -11,24 +11,24 @@ import { Paper } from "../../components/ui-kit/paper/paper";
 interface Props {}
 
 export const ClientProfile = (props: Props) => {
-  let { id } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
-  const [clientData, setClientData] = useState<IClient>();
+  const [clientData, setClientData] = useState<IClient | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const client = await getClient(parseInt(id));
-      setClientData(client);
+      try {
+        const client = await getClient(parseInt(id));
+        setClientData(client);
+        setLoading(false);
+      } catch (error) {
+        dispatch(triggerError(error));
+      }
     };
 
-    try {
-      fetchData();
-      setLoading(false);
-    } catch (error) {
-      dispatch(triggerError(error));
-    }
+    fetchData();
   }, []);
 
   return (
@@ -46,9 +46,9 @@ export const ClientProfile = (props: Props) => {
       <Paper>
         {loading ? (
           <CircularProgress />
-        ) : (
-          clientData && <Results visits={clientData.visits} />
-        )}
+        ) : clientData ? (
+          <Results visits={clientData.visits} />
+        ) : null}
       </Paper>
     </div>
   );

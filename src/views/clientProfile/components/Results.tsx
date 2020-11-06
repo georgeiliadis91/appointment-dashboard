@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IClient } from "../../../entities/client";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import MaterialTable from "material-table";
 import { tableIcons } from "../../../components/table-icons";

@@ -1,3 +1,1 @@
-import MuiAlert from "@material-ui/lab/Alert";
-
-export default MuiAlert;
+export { default as MuiAlert } from "@material-ui/lab/Alert";

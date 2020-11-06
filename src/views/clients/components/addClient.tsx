@@ -34,10 +34,9 @@ export const AddClient = ({ handleClose, open, setErrorMessage }: Props) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async ({ name, phone, email, address }: any) => {
     // alert(JSON.stringify(data));
 
-    const { name, phone, email, address } = data;
     setLoading(true);
     try {
       await addClient({ name, phone, email, address });

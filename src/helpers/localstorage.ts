@@ -4,6 +4,25 @@ interface IStorage {
   clear: (name: string) => void;
 }
 
+// Checking if localstorage is supported.
+export const isLocalStorageSupported = (() => {
+  if (!("localStorage" in window)) {
+    return false;
+  }
+
+  try {
+    const key = "_ls_test_";
+
+    localStorage.setItem(key, key);
+    localStorage.getItem(key);
+    localStorage.removeItem(key);
+
+    return true;
+  } catch {
+    return false;
+  }
+})();
+
 class LocalStorage implements IStorage {
   get = (name: string) => {
     return localStorage.getItem(name);

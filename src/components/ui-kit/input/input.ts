@@ -1,3 +1,1 @@
-import InputBase from "@material-ui/core/InputBase";
-
-export { InputBase };
+export { default as InputBase } from "@material-ui/core/InputBase";
