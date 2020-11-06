@@ -9,12 +9,13 @@ import { Menu, MenuItem } from "../../../components/ui-kit/menu/menu";
 import { Toolbar } from "../../../components/ui-kit/toolbar/toolbar";
 import { Typography } from "../../../components/ui-kit/typography/typography";
 import { triggerSignOut } from "../../../redux/user/actions";
+import { useTriggerSignOut } from "../../../redux/user/hooks";
 
 import { useStyles } from "./navigation.style";
 
 export default function Navigation() {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const signOut = useTriggerSignOut();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -33,7 +34,7 @@ export default function Navigation() {
 
   const handleLogout = () => {
     handleClose();
-    dispatch(triggerSignOut());
+    signOut();
   };
 
   return (

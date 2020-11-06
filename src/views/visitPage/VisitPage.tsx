@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
 import { IVisit } from "../../entities/visit";
 import { triggerError } from "../../redux/alert/actions";
+import { useTriggerError } from "../../redux/alert/hooks";
 import { getVisit } from "../../services/visitApi";
 
 interface Props {}
@@ -12,7 +13,7 @@ export const VisitPage = (props: Props) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [visitData, setVisitData] = useState<IVisit>();
-  const dispatch = useDispatch();
+  const errorAlert = useTriggerError();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,7 @@ export const VisitPage = (props: Props) => {
         const client = await getVisit(parseInt(id));
         setVisitData(client);
       } catch (error) {
-        dispatch(triggerError(error));
+        errorAlert(error);
       }
     };
 

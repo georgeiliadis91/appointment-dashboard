@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { triggerSignIn } from "../../redux/user/actions";
+import { useTriggerSignIn } from "../../redux/user/hooks";
 
 type Inputs = {
   email: string;
@@ -20,12 +21,12 @@ type Inputs = {
 export const Login = () => {
   const classes = useStyles();
 
-  const dispatch = useDispatch();
+  const signIn = useTriggerSignIn();
 
   const { handleSubmit, control } = useForm<Inputs>();
 
   const onSubmit = async (data: Inputs) => {
-    dispatch(triggerSignIn("token"));
+    signIn("token");
   };
 
   return (

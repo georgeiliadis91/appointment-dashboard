@@ -15,10 +15,11 @@ import { Fab } from "../../components/ui-kit/fab/fab";
 import { Tooltip } from "../../components/ui-kit/tooltip/tooltip";
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
 import { Paper } from "../../components/ui-kit/paper/paper";
+import { useTriggerError } from "../../redux/alert/hooks";
 
 const Clients = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const errorAlert = useTriggerError();
   const [clients, setClients] = useState<IClient[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,7 @@ const Clients = () => {
       setClients(clientData);
       setLoading(false);
     } catch (error) {
-      dispatch(triggerError(error));
+      errorAlert(error);
     }
   };
 
@@ -46,7 +47,7 @@ const Clients = () => {
     try {
       refreshData();
     } catch (error) {
-      dispatch(triggerError(error));
+      errorAlert(error);
     }
   }, []);
 

@@ -7,12 +7,13 @@ import { triggerError } from "../../redux/alert/actions";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
 import { Paper } from "../../components/ui-kit/paper/paper";
+import { useTriggerError } from "../../redux/alert/hooks";
 
 interface Props {}
 
 export const ClientProfile = (props: Props) => {
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const errorAlert = useTriggerError();
 
   const [loading, setLoading] = useState(true);
   const [clientData, setClientData] = useState<IClient | null>(null);
@@ -24,7 +25,7 @@ export const ClientProfile = (props: Props) => {
         setClientData(client);
         setLoading(false);
       } catch (error) {
-        dispatch(triggerError(error));
+        errorAlert(error);
       }
     };
 

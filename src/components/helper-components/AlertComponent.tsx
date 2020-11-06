@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/reducers";
 import { Snackbar } from "../ui-kit/snackbar/snackbar";
 import { AlertProps } from "@material-ui/lab/Alert/Alert";
+import { useTriggerClose } from "../../redux/alert/hooks";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function AlertComponent() {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const closeAlert = useTriggerClose();
 
   const { open, type, message } = useSelector((state: AppState) => state.alert);
 
@@ -29,7 +30,7 @@ export default function AlertComponent() {
     if (reason === "clickaway") {
       return;
     }
-    dispatch(triggerClose());
+    closeAlert();
   };
 
   // CLOSE is skipped intentionality cause we want undefined to be a type based on the requirements of the application
