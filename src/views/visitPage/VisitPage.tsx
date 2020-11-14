@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
 import { IVisit } from "../../entities/visit";
-import { triggerError } from "../../redux/alert/actions";
 import { useTriggerError } from "../../redux/alert/hooks";
 import { getVisit } from "../../services/visitApi";
 
@@ -27,7 +25,7 @@ export const VisitPage = (props: Props) => {
 
     fetchData();
     setLoading(false);
-  }, []);
+  }, [errorAlert, id]);
 
   if (loading) {
     return <CircularProgress />;
