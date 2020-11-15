@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LocalStore } from "./storage";
 
 interface IApiConfig {
   baseURL?: string;
@@ -9,6 +10,7 @@ interface IApiConfig {
 class API {
   constructor(private config: IApiConfig = {}) {
     this.config.baseURL = this.config.baseURL || process.env.REACT_APP_API_URL;
+    
   }
 
   public async get(url: string): Promise<any> {
@@ -66,6 +68,8 @@ class API {
   }
 }
 
-const MyAPI = new API();
+const MyAPI = new API({  headers: {
+  Authorization: LocalStore.get("token") ? `Bearer ${LocalStore.get("token")}` : ""
+},});
 
 export { MyAPI };

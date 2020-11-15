@@ -17,7 +17,6 @@ interface IPostData {
 
 const getClients = async (): Promise<IClient[]> => {
   const response = await api.get("clients");
-  console.log(response);
   return response;
 };
 

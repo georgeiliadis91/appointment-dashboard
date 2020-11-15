@@ -12,15 +12,15 @@
 8. Implement DND for week - Done
 9. Protected Routing and mapping - Done
 10. Redux and reducers - Done
+11. Create Visit History - Done
 
 ========PENDINGS =============
 
 3. Jwt tokens
-4. GraphQl
-5. Install and configure Apollo
-6. UseGenerator
+4. GraphQl  - ?? will i really use graphql that is the question?
+5. Install and configure Apollo **
+6. UseGenerator **
 7. Create UI component import point of entry - in progress
-8. Create Visit History
 9. Create Stats Dashboard
 10. Encrpypt Database - Encrypt string.
 11. Forgot Password flow
@@ -28,6 +28,9 @@
 13. Implement DND for month
 14. Implement DND for day
 15. Make Day/Week/Month draggable to have slots where the item "sticks"
+16. Check style on tables, content must be <= that the headers.
+17. Create Token verifycation to check if authed
+18. Rewrite the storage functions that if localStorage isnt supported, that i defaults to cookiestorage
 
 ======== CODE IMPROVEMENTS ==============
 
@@ -38,7 +41,6 @@
 5. Fix any inside allyProps - Done
 6. Fix arrow branching udner weekCaledar - Done
 7. Change variable of useParam to const instead of let - Done
-8. Create a mechanism that if localstorage is not supported it defaults to cookieStorage.
 
 ** Example smippet 1 **
 

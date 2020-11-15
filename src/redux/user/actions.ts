@@ -2,6 +2,7 @@
 export enum ActionTypes {
   SIGNIN = "SIGNIN",
   SIGNOUT = "SIGNOUT",
+  REFRESHLOGIN = "REFRESHLOGIN"
 }
 
 // Action Interfaces
@@ -12,6 +13,9 @@ interface ISignInAction {
 
 interface ISignOutAction {
   type: ActionTypes.SIGNOUT;
+}
+interface IRefreshLogingAction {
+  type: ActionTypes.REFRESHLOGIN;
 }
 
 // dispatch functions
@@ -28,5 +32,11 @@ export const triggerSignOut = () => {
   };
 };
 
+export const triggerRefreshLogin = () => {
+  return {
+    type: ActionTypes.REFRESHLOGIN,
+  };
+};
+
 // Alert action Types used in reducer
-export type AuthActionTypes = ISignInAction | ISignOutAction;
+export type AuthActionTypes = ISignInAction | ISignOutAction |IRefreshLogingAction;

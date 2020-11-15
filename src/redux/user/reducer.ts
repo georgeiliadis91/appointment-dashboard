@@ -1,3 +1,4 @@
+import { isLocalStorageSupported, LocalStore } from "../../helpers/storage";
 import { ActionTypes, AuthActionTypes } from "./actions";
 
 interface IAlertState {
@@ -14,6 +15,9 @@ const userReducer = (state = initialState, action: AuthActionTypes) => {
     case ActionTypes.SIGNOUT: {
       return triggerSignOutUser();
     }
+    case ActionTypes.REFRESHLOGIN: {
+      return triggerRefreshLogin();
+    }
     default:
       return state;
   }
@@ -21,11 +25,20 @@ const userReducer = (state = initialState, action: AuthActionTypes) => {
 
 const triggerSignInUser = (token: string) => {
   //  Set token to local storage
+  if(isLocalStorageSupported){
+    LocalStore.set("token",token)
+  }
+  return { isAuthenticated: true };
+};
+
+const triggerRefreshLogin = () => {
   return { isAuthenticated: true };
 };
 
 const triggerSignOutUser = () => {
-  console.log("Sign Out User !");
+  if(isLocalStorageSupported){
+   LocalStore.clear("token")
+  }
   return { isAuthenticated: false };
 };
 

@@ -12,6 +12,8 @@ import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { triggerSignIn } from "../../redux/user/actions";
 import { useTriggerSignIn } from "../../redux/user/hooks";
+import { signInUser } from "../../services/user";
+import { useTriggerError } from "../../redux/alert/hooks";
 
 type Inputs = {
   email: string;
@@ -23,10 +25,24 @@ export const Login = () => {
 
   const signIn = useTriggerSignIn();
 
+  const errorAlert = useTriggerError();
   const { handleSubmit, control } = useForm<Inputs>();
 
-  const onSubmit = async (data: Inputs) => {
-    signIn("token");
+  const onSubmit = async ({email,password}: Inputs) => {
+
+    try {
+      const response = await signInUser(email, password);
+    
+      if (response.jwt) {
+        signIn(response.jwt);
+      }
+
+    } catch (error) {
+      errorAlert(error.message)
+    }
+
+    
+    // signIn("token");
   };
 
   return (

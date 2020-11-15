@@ -5,7 +5,7 @@ interface IStorage {
 }
 
 // Checking if localstorage is supported.
-export const isLocalStorageSupported = (() => {
+const isLocalStorageSupported = (() => {
   if (!("localStorage" in window)) {
     return false;
   }
@@ -23,7 +23,9 @@ export const isLocalStorageSupported = (() => {
   }
 })();
 
+
 class LocalStorage implements IStorage {
+
   get = (name: string) => {
     return localStorage.getItem(name);
   };
@@ -35,4 +37,7 @@ class LocalStorage implements IStorage {
   };
 }
 
-export default LocalStorage;
+const LocalStore: IStorage = new LocalStorage();
+
+export {  LocalStore ,isLocalStorageSupported};
+
