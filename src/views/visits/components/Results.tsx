@@ -1,5 +1,4 @@
 import React from "react";
-import { IClient } from "../../../entities/client";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
 import MaterialTable from "material-table";
@@ -12,6 +11,7 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import { Avatar } from "../../../components/ui-kit/avatar/avatar";
 import { IconButton } from "../../../components/ui-kit/icons/icons";
 import { Card } from "../../../components/ui-kit/card/card";
+import { IVisit } from "../../../entities/visit";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  clients: IClient[];
+  visits: IVisit[];
 }
 
-const Results: React.FC<Props> = ({ clients }) => {
+const Results: React.FC<Props> = ({ visits }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -38,56 +38,61 @@ const Results: React.FC<Props> = ({ clients }) => {
     <Card className={classes.root}>
       <PerfectScrollbar>
         <MaterialTable
+       
           title="Client List"
           options={{
             paging: true,
             pageSize: 10,
             pageSizeOptions: [10, 20, 50],
             selection: true,
+            tableLayout: "auto"
           }}
           columns={[
             {
               title: "Name",
               field: "name",
-              render: (rowData: IClient) => (
+              render: (rowData: IVisit) => (
                 <div className={classes.rowDataColumn}>
                   <Avatar
                     className={classes.avatar}
                     key={rowData.id}
-                    alt={rowData.name}
-                    src={rowData.image}
+                    alt={rowData.client.name}
+                    src={rowData.client.image}
                   />
-                  <Link to={`/app/clients/${rowData.id}`}>
-                    <Typography variant="body1">{rowData.name}</Typography>
+                  <Link to={`/app/clients/${rowData.client.id}`}>
+                    <Typography variant="body1">{rowData.client.name}</Typography>
                   </Link>
                 </div>
               ),
             },
             {
-              title: "Phone",
-              field: "phone",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.phone}</Typography>
+              title: "Reason",
+              field: "reason",
+              render: (rowData: IVisit) => (
+                <Typography variant="body1">{rowData.reason}</Typography>
               ),
             },
             {
-              title: "Address",
-              field: "address",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.address}</Typography>
+              title: "Description",
+              field: "description",
+              width: 500,
+              render: (rowData: IVisit) => (
+                <Typography variant="body1">{rowData.description.slice(0,80)}</Typography>
               ),
             },
             {
-              title: "Email",
-              field: "email",
-              render: (rowData: IClient) => (
-                <Typography variant="body1">{rowData.email}</Typography>
-              ),
-            },
+                title: "Date",
+                field: "date",
+                render: (rowData: IVisit) => (
+                  <Typography variant="body1">
+                    {dayjs(rowData.date).format("DD.MM.YYYY")}
+                  </Typography>
+                ),
+              },
             {
               title: "Last Updated",
               field: "updated_at",
-              render: (rowData: IClient) => (
+              render: (rowData: IVisit) => (
                 <Typography variant="body1">
                   {dayjs(rowData.updated_at).format("DD.MM.YYYY")}
                 </Typography>
@@ -96,10 +101,11 @@ const Results: React.FC<Props> = ({ clients }) => {
             {
               title: "Actions",
               field: "actions",
-              render: (rowData: IClient) => (
+              width: 85,
+              render: (rowData: IVisit) => (
                 <IconButton
                   onClick={() => {
-                    navigate(`/app/clients/${rowData.id}`);
+                    navigate(`/app/visits/${rowData.id}`);
                   }}
                 >
                   <VisibilityIcon />
@@ -108,7 +114,7 @@ const Results: React.FC<Props> = ({ clients }) => {
               type: "numeric",
             },
           ]}
-          data={clients}
+          data={visits}
           icons={tableIcons}
         />
       </PerfectScrollbar>

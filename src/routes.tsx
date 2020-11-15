@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { DashBoardLayout } from "./layout/dashboard";
 import NotFoundView from "./views/errors/NotFoundView";
-import Clients from "./views/clients/";
+import { Clients } from "./views/clients/";
 import { ClientProfile } from "./views/clientProfile/";
 import { Login } from "./views/login/Login";
 import { PublicLayout } from "./layout/public/PublicLayout";
