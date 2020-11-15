@@ -16,23 +16,24 @@ function App() {
 
   
   useEffect(() => {
+    
     const checkAuth = async () => {
-      const token = LocalStore.get("token");
-      if (token) {
-        try{
-          //Verifiying existed token with backend
+      try{
+        //Verifiying existed token with backend
         const response = await checkToken();
         if(response.confirmed){
           verifiedToken();
         }
-       
-        } catch (error) {
-          errorAlert(error.message);
-        }
+        
+      } catch (error) {
+        errorAlert(error.message);
       }
     };
-
-    checkAuth();
+    
+    const token = LocalStore.get("token");
+    if (token) {
+      checkAuth();
+    }
     // The reason tis ok to disable the eslint error message here is that 
     // the redux dispatch points at a stable result so although the call back is created everytime
     // it is perfectly safe to ignore on this scenario.
