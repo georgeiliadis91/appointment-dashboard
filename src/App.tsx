@@ -21,27 +21,26 @@ function App() {
       try{
         //Verifiying existed token with backend
         const response = await checkToken();
-        if(response.confirmed){
+        if(response?.confirmed){
           verifyToken();
         }
-        
       } catch (error) {
         errorAlert(error.message);
       }
     };
-    
+
     const token = LocalStore.get("token");
     if (token) {
       checkAuth();
     }
-    
+
     // The reason tis ok to disable the eslint error message here is that 
     // the redux dispatch points at a stable result so although the call back is created everytime
     // it is perfectly safe to ignore on this scenario.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
+
   return (
     <ThemeProvider theme={theme}>
       {routing}

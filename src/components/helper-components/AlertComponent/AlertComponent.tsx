@@ -1,12 +1,12 @@
 import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import { MuiAlert } from "../ui-kit/alert/alert";
-import { ActionTypes, triggerClose } from "../../redux/alert/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../../redux/reducers";
-import { Snackbar } from "../ui-kit/snackbar/snackbar";
+import { MuiAlert } from "../../ui-kit/alert/alert";
+import { ActionTypes, } from "../../../redux/alert/actions";
+import {  useSelector } from "react-redux";
+import { AppState } from "../../../redux/reducers";
+import { Snackbar } from "../../ui-kit/snackbar/snackbar";
 import { AlertProps } from "@material-ui/lab/Alert/Alert";
-import { useTriggerClose } from "../../redux/alert/hooks";
+import { useTriggerClose } from "../../../redux/alert/hooks";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;

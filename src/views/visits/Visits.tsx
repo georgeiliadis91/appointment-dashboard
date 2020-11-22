@@ -1,7 +1,7 @@
 import React from "react";
 
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
-import { MainDataDisplay } from "../../components/helper-components/MainDataDisplay";
+import { MainDataDisplay } from "../../components/helper-components/MainDataDisplay/MainDataDisplay";
 import Results from "./components/Results";
 import { getVisits } from "../../services/visitApi";
 import { useStyles } from "./visits.style";

@@ -35,7 +35,8 @@ export const VisitPage = (props: Props) => {
 
   if (loading) {
     return <CircularProgress />;
-  } else {
+  } 
+  
     return (
       <div>
         Visit Page - {id}
@@ -49,5 +50,5 @@ export const VisitPage = (props: Props) => {
         </ul>
       </div>
     );
-  }
+  
 };
