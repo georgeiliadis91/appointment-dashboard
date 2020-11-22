@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
-import { useTriggerError } from "../../redux/alert/hooks";
 import { MainDataDisplay } from "../../components/helper-components/MainDataDisplay";
 import Results from "./components/Results";
-import { IVisit } from "../../entities/visit";
 import { getVisits } from "../../services/visitApi";
-
 import { useStyles } from "./visits.style";
 import { useFetchData } from "../../hooks/useFetchData";
 import { useSelector } from "react-redux";
@@ -14,19 +11,14 @@ import { AppState } from "../../redux/reducers";
 
 export const Visits = () => {
   const classes = useStyles();
-  const errorAlert = useTriggerError();
-  const [visits, setVisits] = useFetchData(getVisits());
-  // const [loading, setLoading] = useState(true);
-
+  const [visits] = useFetchData(getVisits());
   const {loading} = useSelector((state:AppState)=>state.loading)
-
-
 
   return (
     <MainDataDisplay addBtnTitle="Add Visit"> 
-        {loading ? <CircularProgress /> :
+      {loading ? <CircularProgress /> :
         <Results visits={visits} />
-        }
+      }
     </MainDataDisplay>
     
   );

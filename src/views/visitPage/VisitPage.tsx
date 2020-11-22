@@ -30,7 +30,8 @@ export const VisitPage = (props: Props) => {
 
     fetchData();
     setLoading(false);
-  }, [errorAlert, id, setVisitData]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return <CircularProgress />;

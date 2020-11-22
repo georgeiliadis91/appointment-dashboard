@@ -70,6 +70,6 @@ class API {
 
 const MyAPI = new API({  headers: {
   Authorization: LocalStore.get("token") ? `Bearer ${LocalStore.get("token")}` : ""
-},});
+}});
 
 export { MyAPI };

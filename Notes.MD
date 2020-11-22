@@ -39,8 +39,7 @@
 16. Check style on tables, content must be <= that the headers.
 17. Create Token verifycation to check if authed
 18. Rewrite the storage functions that if localStorage isnt supported, that i defaults to cookiestorage
-
-======== CODE IMPROVEMENTS ==============
+19. Remove material table and add custom table Components.
 
 
 ** Example smippet 1 **

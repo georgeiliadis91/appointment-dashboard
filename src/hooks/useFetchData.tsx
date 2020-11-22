@@ -16,12 +16,13 @@ const useFetchData = <T,>(
 
   const getData = async () => {
     setLoadingON();
+    
     try {
       const response = await fetchFunc;
       setData(response);
       setLoadingOFF();
     } catch (error) {
-        errorAlert(error.message);
+      errorAlert(error.message);
     }
   };
 
