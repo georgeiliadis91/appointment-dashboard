@@ -41,6 +41,7 @@
 5. Fix any inside allyProps - Done
 6. Fix arrow branching udner weekCaledar - Done
 7. Change variable of useParam to const instead of let - Done
+8. Add loading to some global redux state so its controllable from one point.
 
 ** Example smippet 1 **
 

@@ -33,6 +33,7 @@ export const Login = () => {
     try {
       const response = await signInUser(email, password);
     
+      console.log(response)
       if (response.jwt) {
         signIn(response.jwt);
       }

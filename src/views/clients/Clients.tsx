@@ -8,36 +8,23 @@ import { useTriggerError } from "../../redux/alert/hooks";
 import { MainDataDisplay } from "../../components/helper-components/MainDataDisplay";
 
 import { useStyles } from "./clients.style";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Clients = () => {
   const classes = useStyles();
-  const errorAlert = useTriggerError();
-  const [clients, setClients] = useState<IClient[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [clients, setClients] = useState<IClient[]>([]);
+  // const [loading, setLoading] = useState(true);
+
+  const [clients, setClients] = useFetchData(getClients());
 
 
 
-  useEffect(() => {
-    const refreshData = async () => {
-      try {
-        const clientData = await getClients();
-        setClients(clientData);
-        setLoading(false);
-      } catch (error) {
-        errorAlert(error);
-      }
-    };
-
-    try {
-      refreshData();
-    } catch (error) {
-      errorAlert(error);
-    }
-  }, [errorAlert]);
 
   return (
     <MainDataDisplay addBtnTitle="Add Client"> 
-        {loading ? <CircularProgress /> : <Results clients={clients} />}
+        {/* {loading ? <CircularProgress /> : }
+         */}
+         <Results clients={clients} />
     </MainDataDisplay>
     
   );

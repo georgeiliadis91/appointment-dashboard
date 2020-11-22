@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {
   Box,
   Button,
@@ -59,8 +58,6 @@ const Toolbar = () => {
   );
 };
 
-Toolbar.propTypes = {
-  className: PropTypes.string,
-};
+
 
 export default Toolbar;

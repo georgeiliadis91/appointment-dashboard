@@ -12,7 +12,7 @@ import { useTriggerRefreshLogin } from "./redux/user/hooks";
 function App() {
   const routing = useRoutes(routes);
   const errorAlert = useTriggerError();
-  const verifiedToken = useTriggerRefreshLogin();
+  const verifyToken = useTriggerRefreshLogin();
 
   
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
         //Verifiying existed token with backend
         const response = await checkToken();
         if(response.confirmed){
-          verifiedToken();
+          verifyToken();
         }
         
       } catch (error) {
@@ -34,6 +34,7 @@ function App() {
     if (token) {
       checkAuth();
     }
+    
     // The reason tis ok to disable the eslint error message here is that 
     // the redux dispatch points at a stable result so although the call back is created everytime
     // it is perfectly safe to ignore on this scenario.

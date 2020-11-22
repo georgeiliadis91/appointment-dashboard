@@ -7,10 +7,15 @@ import { getVisit } from "../../services/visitApi";
 
 interface Props {}
 
+
+// TODO update this one with a hook
+
 export const VisitPage = (props: Props) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [visitData, setVisitData] = useState<IVisit>();
+
+  // const [visitData, setVisitData] = useFetchData(getVisits());
   const errorAlert = useTriggerError();
 
   useEffect(() => {
@@ -25,7 +30,7 @@ export const VisitPage = (props: Props) => {
 
     fetchData();
     setLoading(false);
-  }, [errorAlert, id]);
+  }, [errorAlert, id, setVisitData]);
 
   if (loading) {
     return <CircularProgress />;

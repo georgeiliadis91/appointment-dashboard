@@ -33,7 +33,7 @@ class LocalStorage implements IStorage {
     localStorage.setItem(name, value);
   };
   clear = (name: string) => {
-    localStorage.setItem(name, "");
+    localStorage.removeItem(name);
   };
 }
 

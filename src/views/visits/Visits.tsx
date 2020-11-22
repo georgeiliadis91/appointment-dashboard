@@ -8,36 +8,20 @@ import { IVisit } from "../../entities/visit";
 import { getVisits } from "../../services/visitApi";
 
 import { useStyles } from "./visits.style";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Visits = () => {
   const classes = useStyles();
   const errorAlert = useTriggerError();
-  const [visits, setVisits] = useState<IVisit[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [visits, setVisits] = useFetchData(getVisits());
+  // const [loading, setLoading] = useState(true);
 
 
-
-  useEffect(() => {
-    const refreshData = async () => {
-      try {
-        const visitData = await getVisits();
-        setVisits(visitData);
-        setLoading(false);
-      } catch (error) {
-        errorAlert(error);
-      }
-    };
-
-    try {
-      refreshData();
-    } catch (error) {
-      errorAlert(error);
-    }
-  }, [errorAlert]);
 
   return (
     <MainDataDisplay addBtnTitle="Add Visit"> 
-        {loading ? <CircularProgress /> : <Results visits={visits} />}
+        {/* {loading ? <CircularProgress /> :} */}
+        <Results visits={visits} />
     </MainDataDisplay>
     
   );
