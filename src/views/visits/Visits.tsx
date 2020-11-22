@@ -9,6 +9,8 @@ import { getVisits } from "../../services/visitApi";
 
 import { useStyles } from "./visits.style";
 import { useFetchData } from "../../hooks/useFetchData";
+import { useSelector } from "react-redux";
+import { AppState } from "../../redux/reducers";
 
 export const Visits = () => {
   const classes = useStyles();
@@ -16,12 +18,15 @@ export const Visits = () => {
   const [visits, setVisits] = useFetchData(getVisits());
   // const [loading, setLoading] = useState(true);
 
+  const {loading} = useSelector((state:AppState)=>state.loading)
+
 
 
   return (
     <MainDataDisplay addBtnTitle="Add Visit"> 
-        {/* {loading ? <CircularProgress /> :} */}
+        {loading ? <CircularProgress /> :
         <Results visits={visits} />
+        }
     </MainDataDisplay>
     
   );

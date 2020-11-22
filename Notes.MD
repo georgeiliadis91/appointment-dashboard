@@ -13,11 +13,19 @@
 9. Protected Routing and mapping - Done
 10. Redux and reducers - Done
 11. Create Visit History - Done
+12. Add loading to some global redux state so its controllable from one point. -Done
+13. Fix useEffect trycatch methods, to catch async error - Done
+14. Fix main file imports - Done
+15. Check if localstorageExists \*\* - Done
+16. Fix any inside allyProps - Done
+17. Fix arrow branching udner weekCaledar - Done
+18. Change variable of useParam to const instead of let - Done
+19. Create hook for alert Dispatching -Done
 
 ========PENDINGS =============
 
-3. Jwt tokens
-4. GraphQl  - ?? will i really use graphql that is the question?
+3. Jwt tokens - In progress bug with undefined token exists.
+4. GraphQl  - ?? will i really use graphql that is the question? **
 5. Install and configure Apollo **
 6. UseGenerator **
 7. Create UI component import point of entry - in progress
@@ -34,14 +42,6 @@
 
 ======== CODE IMPROVEMENTS ==============
 
-1. Fix useEffect trycatch methods, to catch async error - Done
-2. Fix main file imports - Done
-3. Create hook for alert Dispatching
-4. Check if localstorageExists \*\* - Done
-5. Fix any inside allyProps - Done
-6. Fix arrow branching udner weekCaledar - Done
-7. Change variable of useParam to const instead of let - Done
-8. Add loading to some global redux state so its controllable from one point.
 
 ** Example smippet 1 **
 

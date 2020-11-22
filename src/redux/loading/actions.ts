@@ -16,10 +16,10 @@ export enum ActionTypes {
   
   
   // dispatch functions
-  export const triggerLoadingOn = (token: string) => {
+  export const triggerLoadingOn = () => {
     return {
       type: ActionTypes.LOADINGON,
-      payload: token,
+    
     };
   };
   

@@ -3,13 +3,13 @@ import { triggerLoadingOff,triggerLoadingOn} from "./actions";
 
 export function useTriggerLoadingOn() {
   const dispatch = useDispatch();
-  return (...args: Parameters<typeof triggerLoadingOn>) =>
-    dispatch(triggerLoadingOn(...args));
+  return () =>
+    dispatch(triggerLoadingOn());
 }
 
-export function useTriggerRefreshLogin() {
+export function useTriggerLoadingOff() {
   const dispatch = useDispatch();
-  return (...args: Parameters<typeof triggerLoadingOff>) =>
-    dispatch(triggerLoadingOff(...args));
+  return () =>
+    dispatch(triggerLoadingOff());
 }
 
