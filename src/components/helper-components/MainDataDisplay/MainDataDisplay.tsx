@@ -1,4 +1,3 @@
-import classes from '*.module.css'
 import React, {  ReactNode, useState } from 'react'
 import { Container } from '../../ui-kit/container/container'
 import { Fab } from '../../ui-kit/fab/fab'
