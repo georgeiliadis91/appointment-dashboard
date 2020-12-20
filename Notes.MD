@@ -46,6 +46,8 @@
 19. Fix style imports
 20. Replace material-table with the custom table components made.
 21. Move things to custom hooks and map the pagination properly
+22. Currently the search is a broken filter connect it to the backent.
+23. Fix pagination to work.
 
 ** Example smippet 1 **
 
