@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { CircularProgress } from "../../components/ui-kit/circular-progress/circulartprogress";
 import { Paper } from "../../components/ui-kit/paper/paper";
 import { useTriggerError } from "../../redux/alert/hooks";
+import { Typography } from "@material-ui/core";
 
 interface Props {}
 
@@ -30,21 +31,23 @@ export const ClientProfile = (props: Props) => {
     };
 
     fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-      Profile page- {id}{" "}
-      <ul>
-        <li>{clientData?.id}</li>
-        <li>{clientData?.name}</li>
-        <li>{clientData?.email}</li>
-        <li>{clientData?.image}</li>
-        <li>{clientData?.address}</li>
-        <li>{clientData?.created_at}</li>
-        <li>{clientData?.phone}</li>
-      </ul>
+      <Paper>
+        <Typography variant="h2">Profile page- {id}</Typography>
+        <ul>
+          <li>{clientData?.id}</li>
+          <li>{clientData?.name}</li>
+          <li>{clientData?.email}</li>
+          <li>{clientData?.image}</li>
+          <li>{clientData?.address}</li>
+          <li>{clientData?.created_at}</li>
+          <li>{clientData?.phone}</li>
+        </ul>
+      </Paper>
       <Paper>
         {loading ? (
           <CircularProgress />

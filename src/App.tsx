@@ -3,7 +3,7 @@ import { useRoutes } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 import routes from "./routes";
 import { theme } from "./theme/applicationTheme";
-import AlertComponent from "./components/helper-components/AlertComponent";
+import AlertComponent from "./components/helper-components/AlertComponent/AlertComponent";
 import {  LocalStore } from "./helpers/storage";
 import { useTriggerError } from "./redux/alert/hooks";
 import { checkToken } from "./services/user";
@@ -14,9 +14,7 @@ function App() {
   const errorAlert = useTriggerError();
   const verifyToken = useTriggerRefreshLogin();
 
-  
   useEffect(() => {
-    
     const checkAuth = async () => {
       try{
         //Verifiying existed token with backend

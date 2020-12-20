@@ -10,66 +10,35 @@ interface IApiConfig {
 class API {
   constructor(private config: IApiConfig = {}) {
     this.config.baseURL = this.config.baseURL || process.env.REACT_APP_API_URL;
-    
   }
 
   public async get(url: string): Promise<any> {
-    try {
-      const response = await axios.get(url, this.config);
-      return response.data;
-    } catch (err) {
-      console.log("Api error", err);
-      // return handleError(err);
-    }
+    const response = await axios.get(url, this.config);
+    return response.data;
   }
   public async post(url: string, data: any = {}): Promise<any> {
-    try {
-      const response = await axios.post(url, data, this.config);
-      return response.data;
-    } catch (err) {
-      console.log("Api error", err);
-      // return handleError(err);
-    }
+    const response = await axios.post(url, data, this.config);
+    return response.data;
   }
 
   public async patch(url: string, data: any = {}): Promise<any> {
-    try {
-      const response = await axios.put(url, data, this.config);
+    const response = await axios.put(url, data, this.config);
 
-      console.log(response);
-      return response.data;
-    } catch (err) {
-      console.log("Api error", err);
-      // return handleError(err);
-    }
+    return response.data;
   }
 
   public async put(url: string, data: any = {}): Promise<any> {
-    try {
-      const response = await axios.put(url, data, this.config);
-      return response.data;
-    } catch (err) {
-      console.log("Api error", err);
-      // return handleError(err);
-    }
+    const response = await axios.put(url, data, this.config);
+    return response.data;
   }
 
   public async delete(url: string, data: any = {}): Promise<any> {
-    try {
-      const response = await axios.delete(url, {
-        ...this.config,
-        data: { ...data },
-      });
-      return response.data;
-    } catch (err) {
-      console.log("Api error", err);
-      // return handleError(err);
-    }
+    const response = await axios.delete(url, {
+      ...this.config,
+      data: { ...data },
+    });
+    return response.data;
   }
 }
 
-const MyAPI = new API({  headers: {
-  Authorization: LocalStore.get("token") ? `Bearer ${LocalStore.get("token")}` : ""
-}});
-
-export { MyAPI };
+export { API };
