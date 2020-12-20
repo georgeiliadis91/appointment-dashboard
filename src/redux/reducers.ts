@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 const allReducer = combineReducers({
   user: User,
   alert: Alert,
-  loading: Loading 
+  loading: Loading,
 });
 
 export default allReducer;

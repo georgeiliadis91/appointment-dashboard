@@ -21,27 +21,31 @@
 17. Fix arrow branching udner weekCaledar - Done
 18. Change variable of useParam to const instead of let - Done
 19. Create hook for alert Dispatching -Done
+20. Jwt tokens - In progress bug with undefined token exists.
 
 ========PENDINGS =============
 
-3. Jwt tokens - In progress bug with undefined token exists.
-4. GraphQl  - ?? will i really use graphql that is the question? **
-5. Install and configure Apollo **
-6. UseGenerator **
+<!-- POSSIBLE ADDITIONS -->
+
+4. GraphQl - ?? will i really use graphql that is the question? \*\*
+5. Install and configure Apollo \*\*
+6. UseGenerator \*\*
+
 7. Create UI component import point of entry - in progress
-9. Create Stats Dashboard
-10. Encrpypt Database - Encrypt string.
-11. Forgot Password flow
-12. Forgot Password gui
-13. Implement DND for month
-14. Implement DND for day
-15. Make Day/Week/Month draggable to have slots where the item "sticks"
-16. Check style on tables, content must be <= that the headers.
-17. Create Token verifycation to check if authed
-18. Rewrite the storage functions that if localStorage isnt supported, that i defaults to cookiestorage
-19. Remove material table and add custom table Components.
-20. Fix style imports
-21. Replace material-table with the custom table components made.
+8. Create Stats Dashboard
+9. Encrpypt Database - Encrypt string.
+10. Forgot Password flow
+11. Forgot Password gui
+12. Implement DND for month
+13. Implement DND for day
+14. Make Day/Week/Month draggable to have slots where the item "sticks"
+15. Check style on tables, content must be <= that the headers.
+16. Create Token verifycation to check if authed
+17. Rewrite the storage functions that if localStorage isnt supported, that i defaults to cookiestorage
+18. Remove material table and add custom table Components.
+19. Fix style imports
+20. Replace material-table with the custom table components made.
+21. Move things to custom hooks and map the pagination properly
 
 ** Example smippet 1 **
 

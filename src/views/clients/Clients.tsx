@@ -9,19 +9,14 @@ import { AppState } from "../../redux/reducers";
 import { useSelector } from "react-redux";
 
 export const Clients = () => {
-  
   const classes = useStyles();
 
-  const {loading} = useSelector((state:AppState)=>state.loading)
+  const { loading } = useSelector((state: AppState) => state.loading);
   const [clients] = useFetchData(getClients());
-  
+
   return (
-    <MainDataDisplay addBtnTitle="Add Client"> 
-      {loading ? <CircularProgress /> : 
-        <Results clients={clients} />
-      }
+    <MainDataDisplay addBtnTitle="Add Client">
+      {loading ? <CircularProgress /> : <Results clients={clients} />}
     </MainDataDisplay>
-    
   );
 };
-

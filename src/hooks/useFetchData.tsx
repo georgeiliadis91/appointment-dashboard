@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTriggerError } from "../redux/alert/hooks";
 import {
-  useTriggerLoadingOn,
   useTriggerLoadingOff,
+  useTriggerLoadingOn,
 } from "../redux/loading/hooks";
 
-// FETCH DATA HOOK
-
-const useFetchData = <T,>(
+export const useFetchData = <T,>(
   fetchFunc: Promise<T[]>
 ): [T[], () => Promise<void>] => {
   const [data, setData] = useState<T[]>([]);
@@ -16,9 +14,8 @@ const useFetchData = <T,>(
   const setLoadingON = useTriggerLoadingOn();
   const setLoadingOFF = useTriggerLoadingOff();
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     setLoadingON();
-
     try {
       const response = await fetchFunc;
       setData(response);
@@ -26,14 +23,13 @@ const useFetchData = <T,>(
     } catch (error) {
       errorAlert(error.message);
     }
-  };
+    // eslint-disable-next-line
+  }, [errorAlert, setLoadingON, setLoadingOFF]);
 
   useEffect(() => {
     getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
   return [data, getData];
 };
-
-export { useFetchData };
