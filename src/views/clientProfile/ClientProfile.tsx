@@ -76,7 +76,6 @@ export const ClientProfile = (props: Props) => {
         </Grid>
       </Paper>
       <Paper>
-        {" "}
         <Results visits={clientData.visits} />
       </Paper>
     </div>
